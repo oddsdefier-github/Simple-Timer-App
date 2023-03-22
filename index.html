@@ -5,39 +5,48 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Task</title>
-		<link href="/dist/output.css" rel="stylesheet" />
-		<link href="/dist/style.css" rel="stylesheet" />
+		<link href="./dist/output.css" rel="stylesheet" />
+		<link href="./dist/style.css" rel="stylesheet" />
 		<script defer src="/js/main.js"></script>
 	</head>
-	<body class="text-gray-800 font-inter">
-		<header class="sticky top-0 h-auto w-screen p-2 text-center lg:fixed">
-			<h1 class="text-[4rem] font-extrabold">Timer</h1>
+	<body class="relative h-screen w-screen overflow-y-hidden bg-vsGray text-gray-900 font-inter">
+		<header class="mb-10 h-auto w-screen p-2 text-center">
+			<h1 class="mt-10 text-[2rem] font-extrabold text-vsBlue">Timer</h1>
 		</header>
-		<main class="flex h-screen w-screen items-center justify-center">
-			<div class="flex h-1/2 w-1/2 items-start justify-center gap-5 rounded-md bg-gray-200 p-5">
-				<div class="h-full w-1/2">
-					<h1 class="my-2 font-bold text-2xl">Task Manager</h1>
-					<div class="flex w-full">
-						<input placeholder="Add New Task" class="w-[85%] p-2" type="text" id="user-input" required />
-						<button id="add-btn" class="flex w-[15%] items-center justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-7 w-7 hover:stroke-emerald-400">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-							</svg>
-						</button>
+		<main class="flex h-screen w-screen items-start justify-center text-vsLight">
+			<div class="mx-10 flex w-full flex-col rounded-md border border-gray-700 bg-vsDark lg:w-[30rem] lg:flex-row">
+				<div class="border-l-8 border-vsBlue p-7 lg:w-full">
+					<h1 class="mb-3 border-b border-vsBlue p-1 pl-2 font-semibold text-xl">Pomodoro</h1>
+					<div class="flex h-52 w-[100%] flex-col items-start justify-center">
+						<div class="flex h-[20%] w-[100%] items-center justify-between px-2">
+							<input placeholder="Add New Task" class="h-[80%] w-[85%] rounded-sm border border-vsBlue py-3 px-2 text-vsDark text-sm" type="text" id="user-input" required />
+							<button id="add-btn" class="flex h-[80%] w-[15%] items-center justify-center">
+								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-8 w-8 stroke-vsYellow"><path stroke-linecap="round stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+							</button>
+						</div>
+						<div class="flex h-[80%] w-full items-center justify-center">
+							<h3 id="timer" class="inline-block text-[4.5rem] font-semibold text-vsYellow"></h3>
+						</div>
 					</div>
-					<div class="my-7 flex h-[65%] w-[85%] items-center justify-center bg-blue-200">
-						<div><h3 id="timer" class="text-[5rem] font-extrabold text-gray-900"></h3></div>
+					<div class="h-52 w-full">
+						<h1 class="mb-3 border-b border-vsBlue p-1 pl-2 font-semibold text-xl">Todo</h1>
+						<div class="">
+							<ul id="name-list" class="list-inside list-decimal px-2 text-sm"></ul>
+							<div class="mt-2 flex h-[20%] w-[100%] flex-row items-center justify-center px-2 text-vsDark">
+								<p id="message" class="hidden h-[80%] w-[85%] items-center rounded-sm bg-orange-500 px-2 py-2 text-sm">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-1 h-5 w-5">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+									</svg>
+									Finish these tasks first!
+								</p>
+								<button id="reset" class="flex h-[80%] w-[15%] items-center justify-center">
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-7 w-7 stroke-orange-600">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+									</svg>
+								</button>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="h-full w-1/2 bg-slate-50 px-5 py-2 text-gray-800">
-					<h1 class="font-bold text-lg">TODO</h1>
-					<ul id="name-list" class="list-disc marker:text-sky-500"></ul>
-					<p id="message"></p>
-					<button id="reset">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-7 w-7 hover:stroke-red-600">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-						</svg>
-					</button>
 				</div>
 			</div>
 		</main>

@@ -6,7 +6,15 @@ module.exports = {
 
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'vsGray': '#282c34',
+        'vsLight': '#cccccc',
+        'vsDark': '#21252b',
+        'vsBlue': '#528bff',
+        'vsYellow': '#f0db4f',
+      },
+    },
   },
   plugins: [require('tailwindcss-font-inter')],
 }

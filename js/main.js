@@ -20,10 +20,9 @@ function addTask() {
 	let isTimerEnabled = true;
 
 	if (addedTask >= 2) {
-		messageText.innerHTML = "Finish these first!";
-		addBtn.replaceWith(resetBtn);
+		addBtn.disabled = true;
 		resetBtn.style.display = "flex";
-		addBtn.replaceWith(resetBtn);
+		messageText.style.display = "flex";
 		resetBtn.addEventListener("click", resetState);
 		//execute boolean
 		isTimerEnabled = false;
@@ -32,7 +31,7 @@ function addTask() {
 
 	addedTask++;
 
-	startTimer(300000);
+	startTimer(3000);
 
 	function startTimer(duration) {
 		//check the boolean
@@ -60,12 +59,13 @@ function addTask() {
 	nameList.appendChild(newLi);
 
 	userInput.value = "";
+		
 
 	addBtn.removeEventListener("click", addTask);
 
 	setTimeout(function () {
 		addBtn.addEventListener("click", addTask);
-	}, 300000);
+	}, 3000);
 }
 
 addBtn.addEventListener("click", addTask);
